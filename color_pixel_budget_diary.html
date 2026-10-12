@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PIXEL PURSE · 每日记账</title>
+<style>
+:root{--mint:#79eadb;--mint2:#b8f6ec;--pink:#ef8fc3;--pink2:#ffd0e7;--ink:#8b3e70;--paper:#fff8fc;--shadow:#cf6fa7}
+*{box-sizing:border-box} body{margin:0;background:var(--mint);color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;min-height:100vh;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:12px 12px}
+button,input,select{font:inherit}.wrap{max-width:1120px;margin:auto;padding:28px 18px 60px}.top{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}.brand h1{margin:0;font-size:clamp(30px,5vw,58px);letter-spacing:-3px;text-shadow:3px 3px 0 var(--pink2)}.brand p{margin:5px 0 0;font-weight:700}.pixel{font-size:34px;letter-spacing:2px;color:var(--pink);filter:drop-shadow(2px 2px 0 rgba(255,255,255,.35));white-space:nowrap}.panel{position:relative;background:rgba(255,248,252,.93);border:4px solid var(--pink);box-shadow:7px 7px 0 var(--shadow);padding:18px}.panel:before{content:"♡ ･ﾟ✧ ୨୧ ✧ﾟ･ ♡ ･ﾟ✧ ୨୧ ✧ﾟ･ ♡";position:absolute;left:8px;right:8px;top:-15px;text-align:center;color:var(--pink);font-weight:900;letter-spacing:3px;font-size:12px;background:var(--mint);white-space:nowrap;overflow:hidden}.currency-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(92px,1fr);gap:8px}.currency-row input,.currency-row select{min-width:0}.conversion{margin-top:6px;padding:8px;border:2px dashed var(--pink);background:var(--pink2);font-size:12px;font-weight:800}.currency-toggle{display:flex;gap:6px}.currency-toggle .btn.active{background:var(--pink);color:white}.currency-toggle .btn{padding:6px 10px;box-shadow:2px 2px 0 var(--ink)}.grid{display:grid;grid-template-columns:1.05fr 1.95fr;gap:20px}.formgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.field{grid-column:span 6;min-width:0;display:flex;flex-direction:column;gap:6px}.field.amount-field{grid-column:span 8}.field.category-field{grid-column:span 4}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px}input,select{width:100%;border:3px solid var(--pink);background:white;color:var(--ink);padding:11px;outline:none;border-radius:0}input:focus,select:focus{box-shadow:3px 3px 0 var(--pink2)}.btn{border:3px solid var(--ink);background:var(--pink);color:white;font-weight:900;padding:11px 15px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:.08s}.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}.btn.alt{background:var(--mint2);color:var(--ink)}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}.section-title h2{font-size:18px;margin:0}.daynav{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.daynav .btn{width:35px;height:35px;padding:0;box-shadow:2px 2px 0 var(--ink);white-space:nowrap}.daynav #backToday{width:auto;min-width:62px;padding:0 14px;line-height:1}.daynav input{width:145px;padding:6px 8px;border-width:2px;font-size:12px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.stat{border:3px solid var(--pink);padding:12px;background:white}.stat small{display:block;font-weight:800}.stat strong{display:block;font-size:22px;margin-top:5px}.list{display:flex;flex-direction:column;gap:8px;max-height:355px;overflow:auto;padding-right:3px}.row{display:grid;grid-template-columns:90px 1fr auto auto;align-items:center;gap:10px;border:2px dashed var(--pink);padding:10px;background:#fff}.tag{display:inline-block;background:var(--pink2);padding:3px 7px;font-size:12px;font-weight:900}.amt{font-weight:900}.del{border:0;background:transparent;color:var(--ink);font-weight:900;cursor:pointer;font-size:18px}.summary{margin-top:20px}.summary-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}.monthnav{display:flex;gap:8px;align-items:center}.monthnav button{width:35px;height:35px;padding:0}.monthname{font-weight:900;min-width:110px;text-align:center}.summarygrid{display:grid;grid-template-columns:1.1fr 1.9fr;gap:18px;margin-top:14px}.bars{display:flex;flex-direction:column;gap:10px}.barline{display:grid;grid-template-columns:74px 1fr 80px;align-items:center;gap:8px;font-size:12px;font-weight:800}.track{height:18px;border:2px solid var(--pink);background:white}.fill{height:100%;background:var(--pink)}canvas{width:100%;height:230px;background:white;border:3px solid var(--pink);image-rendering:pixelated}.empty{text-align:center;padding:32px 10px;border:2px dashed var(--pink);background:white}.footer{text-align:center;margin-top:24px;font-size:11px;font-weight:800}.orn{margin:0 0 12px;text-align:center;color:var(--pink);font-weight:900;letter-spacing:4px}.actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+@media(max-width:800px){.grid,.summarygrid{grid-template-columns:1fr}.top{align-items:flex-start}.pixel{font-size:22px}.stats{grid-template-columns:1fr}.row{grid-template-columns:72px 1fr auto}.row .tag{grid-column:2}.formgrid{grid-template-columns:1fr}.field,.field.amount-field,.field.category-field,.field.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><div class="brand"><h1>PIXEL PURSE</h1><p>♡ 每一笔，都有迹可循 ♡</p></div><div class="pixel">⌁ ♡ ⌁</div></header>
+  <div class="orn">□ □ □ ♡ □ □ □</div>
+  <main class="grid">
+    <section class="panel">
+      <div class="section-title"><h2>+ 记一笔</h2><span id="todayLabel"></span></div>
+      <form id="entryForm" class="formgrid">
+        <div class="field"><label>日期</label><input id="date" type="date" required></div>
+        <div class="field"><label>类型</label><select id="type"><option value="expense">支出</option><option value="income">收入</option></select></div>
+        <div class="field amount-field"><label>金额</label><div class="currency-row"><input id="amount" type="number" min="0.01" step="0.01" placeholder="12.50" required><select id="currency"><option value="SGD">SGD S$</option><option value="CNY">CNY ¥</option></select></div><div class="conversion" id="conversionHint">汇率：1 SGD = 5.28 CNY</div></div>
+        <div class="field category-field"><label>分类</label><select id="category"><option>餐饮</option><option>交通</option><option>购物</option><option>娱乐</option><option>住房</option><option>学习</option><option>旅行</option><option>工资</option><option>其他</option></select></div>
+        <div class="field full"><label>备注</label><input id="note" maxlength="50" placeholder="今天买了什么？"></div>
+        <button class="btn field full" type="submit">SAVE ✦ 保存记录</button>
+      </form>
+      <div class="actions"><button class="btn alt" id="exportBtn" type="button">导出 CSV</button><button class="btn alt" id="clearBtn" type="button">清空全部</button></div>
+    </section>
+    <section class="panel">
+      <div class="section-title"><h2 id="dayBillTitle">今日账单</h2><span class="tag" id="countTag">0 笔</span></div>
+      <div class="daynav" style="margin-bottom:14px"><button class="btn alt" id="prevDay" type="button" title="前一天">‹</button><input id="billDate" type="date" aria-label="查看账单日期"><button class="btn alt" id="nextDay" type="button" title="后一天">›</button><button class="btn alt" id="backToday" type="button">今天</button></div>
+      <div class="stats"><div class="stat"><small>今日支出</small><strong id="todayExpense">$0.00</strong></div><div class="stat"><small>今日收入</small><strong id="todayIncome">$0.00</strong></div><div class="stat"><small>今日结余</small><strong id="todayNet">$0.00</strong></div></div>
+      <div id="entryList" class="list"></div>
+    </section>
+  </main>
+  <section class="panel summary">
+    <div class="summary-head"><div><h2 style="margin:0">月度花销汇总</h2><small>按分类查看本月的钱都去了哪里</small></div><div class="currency-toggle"><button class="btn alt active" id="showSGD" type="button">SGD</button><button class="btn alt" id="showCNY" type="button">CNY</button></div><div class="monthnav"><button class="btn alt" id="prevMonth">‹</button><span class="monthname" id="monthName"></span><button class="btn alt" id="nextMonth">›</button></div></div>
+    <div class="stats" style="margin-top:14px"><div class="stat"><small>本月支出</small><strong id="monthExpense">$0.00</strong></div><div class="stat"><small>本月收入</small><strong id="monthIncome">$0.00</strong></div><div class="stat"><small>本月结余</small><strong id="monthNet">$0.00</strong></div></div>
+    <div class="summarygrid"><div><h3>分类占比</h3><div id="categoryBars" class="bars"></div></div><div><h3>每日支出趋势</h3><canvas id="trend" width="700" height="230"></canvas></div></div>
+  </section>
+  <div class="footer">数据只保存在你的浏览器 LocalStorage 中 · PIXEL PURSE</div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const FX=5.28; let displayCurrency='SGD';
+const money=(n,c=displayCurrency)=>c==='CNY'?'¥'+Number(n||0).toFixed(2):'S$'+Number(n||0).toFixed(2);
+const key='pixel-purse-v1'; let entries=JSON.parse(localStorage.getItem(key)||'[]'); let view=new Date(); view.setDate(1);
+// Backward compatibility: old records are SGD. New records keep original currency and locked FX rate.
+entries=entries.map(x=>({...x,currency:x.currency||'SGD',originalAmount:x.originalAmount??x.amount,fxRate:x.fxRate||FX,amountSGD:x.amountSGD??x.amount}));
+const inDisplay=x=>displayCurrency==='CNY'?Number(x.amountSGD??x.amount)*FX:Number(x.amountSGD??x.amount);
+const fmtEntry=x=>money(displayCurrency==='CNY'?Number(x.amountSGD??x.amount)*FX:Number(x.amountSGD??x.amount),displayCurrency);
+const isoLocal=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*60000);return z.toISOString().slice(0,10)};
+$('#date').value=isoLocal(new Date()); $('#todayLabel').textContent=new Date().toLocaleDateString('zh-CN',{month:'short',day:'numeric'}); let selectedDay=isoLocal(new Date()); $('#billDate').value=selectedDay;
+function save(){try{localStorage.setItem(key,JSON.stringify(entries));const check=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(check)||check.length!==entries.length)throw new Error('storage verification failed');render();return true}catch(err){console.error(err);render();alert('记录已加入当前页面，但浏览器没有成功写入本地存储。请不要关闭页面，并导出 CSV 备份。');return false}}
+$('#entryForm').addEventListener('submit',e=>{e.preventDefault();const originalAmount=Number($('#amount').value),currency=$('#currency').value,date=$('#date').value;if(!date||!Number.isFinite(originalAmount)||originalAmount<=0){alert('请检查日期和金额。');return;}const amountSGD=currency==='CNY'?originalAmount/FX:originalAmount;const item={id:Date.now(),date,type:$('#type').value,amount:amountSGD,amountSGD,originalAmount,currency,fxRate:FX,category:$('#category').value,note:$('#note').value.trim()};entries.push(item);const ok=save();if(ok){$('#amount').value='';$('#note').value='';updateConversion();}});
+function render(){renderToday();renderMonth()}
+function renderToday(){const t=selectedDay, xs=entries.filter(x=>x.date===t).sort((a,b)=>b.id-a.id), ex=sum(xs.filter(x=>x.type==='expense')), inc=sum(xs.filter(x=>x.type==='income'));const isToday=t===isoLocal(new Date());const parts=t.split('-');$('#dayBillTitle').textContent=isToday?'今日账单':`${Number(parts[1])}月${Number(parts[2])}日账单`;$('#todayExpense').previousElementSibling.textContent=isToday?'今日支出':'当日支出';$('#todayIncome').previousElementSibling.textContent=isToday?'今日收入':'当日收入';$('#todayNet').previousElementSibling.textContent=isToday?'今日结余':'当日结余';$('#todayExpense').textContent=money(ex);$('#todayIncome').textContent=money(inc);$('#todayNet').textContent=money(inc-ex);$('#countTag').textContent=xs.length+' 笔';const box=$('#entryList');box.innerHTML=xs.length?'':`<div class="empty">${isToday?'今天':'这一天'}还没有记录 ♡<br><small>可以从左边补记一笔</small></div>`;xs.forEach(x=>{const el=document.createElement('div');el.className='row';el.innerHTML=`<span>${x.type==='expense'?'支出':'收入'}</span><div><b>${escapeHtml(x.note||x.category)}</b><br><span class="tag">${escapeHtml(x.category)}</span></div><span class="amt">${x.type==='expense'?'-':'+'}${fmtEntry(x)}</span><button class="del" title="删除">×</button>`;el.querySelector('.del').onclick=()=>{entries=entries.filter(e=>e.id!==x.id);save()};box.appendChild(el)})}
+function sum(xs){return xs.reduce((a,x)=>a+inDisplay(x),0)}
+function renderMonth(){const y=view.getFullYear(),m=view.getMonth(),prefix=`${y}-${String(m+1).padStart(2,'0')}`,xs=entries.filter(x=>x.date.startsWith(prefix)),exs=xs.filter(x=>x.type==='expense'),incs=xs.filter(x=>x.type==='income'),ex=sum(exs),inc=sum(incs);$('#monthName').textContent=`${y}.${String(m+1).padStart(2,'0')}`;$('#monthExpense').textContent=money(ex);$('#monthIncome').textContent=money(inc);$('#monthNet').textContent=money(inc-ex);const groups={};exs.forEach(x=>groups[x.category]=(groups[x.category]||0)+x.amount);const sorted=Object.entries(groups).sort((a,b)=>b[1]-a[1]);const bars=$('#categoryBars');bars.innerHTML=sorted.length?'':'<div class="empty">这个月还没有支出记录</div>';sorted.forEach(([c,v])=>{const p=ex?v/ex*100:0;bars.insertAdjacentHTML('beforeend',`<div class="barline"><span>${escapeHtml(c)}</span><div class="track"><div class="fill" style="width:${p}%"></div></div><span>${money(v)}</span></div>`)});drawTrend(exs,y,m)}
+function drawTrend(xs,y,m){const c=$('#trend'),ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);const days=new Date(y,m+1,0).getDate(),vals=Array(days).fill(0);xs.forEach(x=>vals[+x.date.slice(-2)-1]+=inDisplay(x));const max=Math.max(...vals,1),pad=35;ctx.strokeStyle='#ef8fc3';ctx.lineWidth=3;ctx.beginPath();vals.forEach((v,i)=>{const x=pad+i*(w-pad*2)/(days-1),yy=h-pad-v/max*(h-pad*2);i?ctx.lineTo(x,yy):ctx.moveTo(x,yy)});ctx.stroke();ctx.fillStyle='#8b3e70';ctx.font='12px monospace';ctx.fillText((displayCurrency==='CNY'?'¥':'S$')+max.toFixed(0),5,18);ctx.fillText('1',pad-3,h-10);ctx.fillText(String(days),w-pad-8,h-10);ctx.strokeStyle='#ffd0e7';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad,h-pad);ctx.lineTo(w-pad,h-pad);ctx.stroke()}
+
+function shiftSelectedDay(delta){const [y,m,d]=selectedDay.split('-').map(Number);const dt=new Date(y,m-1,d);dt.setDate(dt.getDate()+delta);selectedDay=isoLocal(dt);$('#billDate').value=selectedDay;renderToday()}
+$('#prevDay').onclick=()=>shiftSelectedDay(-1);
+$('#nextDay').onclick=()=>shiftSelectedDay(1);
+$('#backToday').onclick=()=>{selectedDay=isoLocal(new Date());$('#billDate').value=selectedDay;renderToday()};
+$('#billDate').addEventListener('change',()=>{if($('#billDate').value){selectedDay=$('#billDate').value;renderToday()}});
+
+$('#prevMonth').onclick=()=>{view.setMonth(view.getMonth()-1);renderMonth()};$('#nextMonth').onclick=()=>{view.setMonth(view.getMonth()+1);renderMonth()};
+$('#clearBtn').onclick=()=>{if(confirm('确定清空所有记账数据吗？此操作无法撤销。')){entries=[];save()}};
+$('#exportBtn').onclick=()=>{const rows=[['日期','类型','原始金额','币种','锁定汇率(CNY/SGD)','折算SGD','分类','备注'],...entries.map(x=>[x.date,x.type==='expense'?'支出':'收入',x.originalAmount??x.amount,x.currency||'SGD',x.fxRate||FX,x.amountSGD??x.amount,x.category,x.note])];const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='pixel-purse.csv';a.click();URL.revokeObjectURL(a.href)};
+
+function updateConversion(){const v=+$('#amount').value||0,c=$('#currency').value;$('#conversionHint').textContent=c==='CNY'?`¥${v.toFixed(2)} ≈ S$${(v/FX).toFixed(2)} · 1 SGD = ${FX} CNY`:`S$${v.toFixed(2)} ≈ ¥${(v*FX).toFixed(2)} · 1 SGD = ${FX} CNY`;}
+$('#amount').addEventListener('input',updateConversion);$('#currency').addEventListener('change',updateConversion);
+$('#showSGD').onclick=()=>{displayCurrency='SGD';$('#showSGD').classList.add('active');$('#showCNY').classList.remove('active');render()};
+$('#showCNY').onclick=()=>{displayCurrency='CNY';$('#showCNY').classList.add('active');$('#showSGD').classList.remove('active');render()};
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+render();
+</script>
+</body></html>
